@@ -31,7 +31,7 @@ The aim of this project is to analyse my own viewing history on Netflix over the
 # Installing Libraries
 
 Use the following command to install the libraries required for this project
-> pip install *library_name* : 
+> pip install *library_name*
 
 Install the following libraries :
 
