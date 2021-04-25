@@ -24,7 +24,7 @@ The aim of this project is to analyse my own viewing history on Netflix over the
 - [Collecting the Data](#Collecting-the-Data)
 - [Reading the Data](#Reading-the-Data)
 - [Cleaning the Data](#Cleaning-the-Data)
-- Exporting to CSV
+- [Exporting to CSV](#Exporting-the-Data)
 - Data Visualization
     - Average Watch time (Seconds) by day of week
     - Viewing History by day of week
@@ -133,7 +133,7 @@ my_data = my_data.drop(columns = columns_to_drop)
 
  When data is imported from a csv file, the columns that should have DateTime data type is imported as a Object data type. Hence, we need to convert the ***Start Time*** (renamed to Date) column to DateTime using ```pd.to_datetime()``` method. 
 
-Once the required column has been converted to a DateTime data type, we can now access DateTime properties such as extracting month, day name etc using the ```df['Date'].dt accessor``` 
+Once the required column has been converted to a DateTime data type, we can now access DateTime properties such as extracting month, day name etc using the ```df['Date'].dt``` accessor. 
 
 (Refer the [documentation](https://pandas.pydata.org/docs/reference/api/pandas.Series.dt.html?highlight=series%20dt#pandas.Series.dt) to learn more about different DateTime properties). 
 
@@ -161,6 +161,10 @@ Since movies don't have a season or an episode, all rows where Season is Null wi
 
 ```my_data['Content Type'] = my_data['Season'].apply(lambda x : 'Movie' if x == None else 'TV Show')```
 
+
+# Exporting the Data
+
+Finally, after cleaning the data and manipulating it as required, the data can be exported to a csv file so that you don't have to keep running the cells again and again. This can be done using ```df.to_csv(filename)```.
 
 
  
