@@ -2,6 +2,13 @@
 
 A detailed analysis of my viewing history on Netflix over the past year (2020 - 2021) using pandas and seaborn in python. 
 
+*P.S. : Refer the jupyter notebooks to understand better. This README file is just a description of the project.*
+
+*File ***script1-data_manipulation.ipynb*** contains initial data cleaning and wrangling using which I export the data to a csv file.*
+
+*File ***Script2-Data_Analysis.ipynb*** contains all the working for generating the visualizations.* 
+
+
 ### Motivation
 
 Netflix has truly revolutionized the way we consume content. We find ourselves spending hours watching movies or binge watching popular TV Series. Personally, Netflix is my most preferred platform for consuming content just because of the amount of content available and the ease of use of the platform. 
@@ -17,8 +24,6 @@ The aim of this project is to analyse my own viewing history on Netflix over the
 - [Collecting the Data](#Collecting-the-Data)
 - [Reading the Data](#Reading-the-Data)
 - [Cleaning the Data](#Cleaning-the-Data)
-    - Extracting Datetime information
-    - Removing unwanted data
 - Exporting to CSV
 - Data Visualization
     - Average Watch time (Seconds) by day of week
@@ -97,3 +102,66 @@ In this project, I will be working on jupyter notebooks. Jupyter notebooks are g
 Here, you will notice that the column *Start Time* is object type and should be of DateTime type instead. We will handle this during the data cleaning process. Make sure all other columns have the correct data types. 
 
 # Cleaning the Data
+
+A data analyst spends most of their time cleaning the data and structuring the data into a acceptable format. 
+
+(Refer to the ***script1-data_manipulation.ipynb*** notebook to understand the data cleaning process better. )
+
+My aim here is to complete the following tasks :
+
+- [***Task 1 :***](#Task-1) Drop the unwanted columns like *Country*, *Attributes*, *Bookmark*, *Latest Bookmark* etc. 
+
+- [***Task 2 :***](#Task-2) Use the *Start Time* column and convert it into datetime and extract useful information such as *Day Name*, *Year*, *Month*, *Week* etc. 
+
+- [***Task 3 :***](#Task-3) Filter and keep only useful data and remove unwanted rows of data. 
+
+- [***Task 4 :***](#Task-4) Split the Title column to extract *Season* and *Episode* information. 
+
+## Task 1 
+
+When we imported the data as a dataframe, we had 10 columns and the column definitions are described above. Some columns such as Country, Attributes, Bookmark and Latest Bookmark are not required for analysis because either they have a lot of **NaN** values or just 1 value is repeated (for instance in Country column only 1 value is present i.e. India). 
+
+Consequently, such columns can be dropped using the following piece of code. (Refer the jupyter notebooks to understand better)
+
+``` 
+columns_to_drop = ['Country', 'Bookmark', 'Latest Bookmark', 'index', 'Attributes']
+my_data = my_data.drop(columns = columns_to_drop)
+``` 
+ Alternatively, you can also use ```df.drop(columns = columns_to_drop, inplace = True)``` to achieve the same result. 
+
+ ## Task 2
+
+ When data is imported from a csv file, the columns that should have DateTime data type is imported as a Object data type. Hence, we need to convert the ***Start Time*** (renamed to Date) column to DateTime using ```pd.to_datetime()``` method. 
+
+Once the required column has been converted to a DateTime data type, we can now access DateTime properties such as extracting month, day name etc using the ```df['Date'].dt accessor``` 
+
+(Refer the [documentation](https://pandas.pydata.org/docs/reference/api/pandas.Series.dt.html?highlight=series%20dt#pandas.Series.dt) to learn more about different DateTime properties). 
+
+ Also, since the data given is in UTC time zone, I converted it to my local time zone i.e IST (GMT+5:30) using ```df['Date'].dt.tz_localize('GMT').dt.tz_convert('Asia/Kolkata')```
+
+ (Refer the [article](https://stackoverflow.com/questions/22800079/converting-time-zone-pandas-dataframe) to understand the conversion). 
+
+ Finally, we will get *Month*, *Year*, *day_name*, *day_of_week* and a *day* column. This helps us group data by Month or Day_Name to extract useful insights. 
+
+ ## Task 3
+
+ There are a lot of unwanted rows in the data. For instance, the Supplemental Video Type tells us if what you watched was a trailer or a hook or a preview. Because Netflix has an autoplay trailer option whenever you hover above a Movie or TV Show, it is recorded as something you watched. Hence, we will remove such rows because their watch time will be at max 1 minute and it is not useful for our analysis. We are interested in Movies and TV Shows and not the trailers or the hooks. 
+
+ The Supplmental Video Type is NaN when you watch a Movie or TV Show. Hence, we will only keep rows where Supplemental Video Type is NaN using ```my_data = my_data[my_data['Supplemental Video Type'].isna()]```.
+
+This is the data we will use for further analysis. 
+
+## Task 4
+
+The data has a column named ***Title*** which stores information about what you watched. Netflix stores the title of a TV Series or a Movie in a particular format i.e. TV Show : Season : Episode. We can thus split the column on colon and split the Title into 3 different columns. This is illustrated below. 
+
+```my_data[['TV Show', 'Season', 'Episode']] = my_data['Title'].str.split(':', expand = True, n = 2)```
+
+Since movies don't have a season or an episode, all rows where Season is Null will be the movies. The same is mapped in the data using the lambda function and apply method. 
+
+```my_data['Content Type'] = my_data['Season'].apply(lambda x : 'Movie' if x == None else 'TV Show')```
+
+
+
+ 
+
