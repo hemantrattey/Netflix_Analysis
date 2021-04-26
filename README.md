@@ -25,13 +25,7 @@ The aim of this project is to analyse my own viewing history on Netflix over the
 - [Reading the Data](#Reading-the-Data)
 - [Cleaning the Data](#Cleaning-the-Data)
 - [Exporting to CSV](#Exporting-the-Data)
-- Data Visualization
-    - Average Watch time (Seconds) by day of week
-    - Viewing History by day of week
-    - Top 10 TV Shows by Average Watch time (Seconds)
-    - Top 10 Binge Watching TV Series
-    - Distribution of Watch time across months
-    - Distribution of Watch time across day of week 
+- [Data Visualization](#Data-Visualization)
 
 # Installing Libraries
 
@@ -92,7 +86,7 @@ In this project, I will be working on jupyter notebooks. Jupyter notebooks are g
     import matplotlib.pyplot as plt
     ```
 
-- Use the `os.get_cwd()` method to get the current directory of the project and append the ViewingActivity.csv to read the required data. 
+- Use the `os.get_cwd()` method to get the current directory of the project and join the *ViewingActivity.csv* using the ```os.path.join()``` method to read the required data. 
 
 - Use `pd.read_csv()` method to read the file as a dataframe which will help us clean the data and manipulate it easily. Make sure to read the documentation for pandas : [https://pandas.pydata.org/docs/](https://pandas.pydata.org/docs/)
 
@@ -167,5 +161,6 @@ Since movies don't have a season or an episode, all rows where Season is Null wi
 Finally, after cleaning the data and manipulating it as required, the data can be exported to a csv file so that you don't have to keep running the cells again and again. This can be done using ```df.to_csv(filename)```.
 
 
- 
+# Data Visualization
 
+Please look at the [README](/viz/README.md) file inside the *viz* folder to learn about the data visualization and analysis part of the project. 
