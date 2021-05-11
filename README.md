@@ -13,7 +13,7 @@ A detailed analysis of my viewing history on Netflix over the past year (2020 - 
 
 Netflix has truly revolutionized the way we consume content. We find ourselves spending hours watching movies or binge watching popular TV Series. Personally, Netflix is my most preferred platform for consuming content just because of the amount of content available and the ease of use of the platform. 
 
-Pandemic hit the world in 2020 and we were forced to live indoors and work from home. Because we were restricted in our houses, people starting consuming more and more content and started spening much more time on Netflix. 
+Pandemic hit the world in 2020 and we were forced to live indoors and work from home. Because we were restricted in our houses, people started consuming more and more content and started spending much more time on Netflix. 
 
 The aim of this project is to analyse my own viewing history on Netflix over the past year. I tried to find some interesting trends in my viewing history during the pandemic and how it has changed over time. 
 
