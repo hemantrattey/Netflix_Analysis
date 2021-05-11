@@ -1,5 +1,7 @@
 # Netflix Viewing History Analysis - Python
 
+![Netflix](https://github.com/hemantrattey/Netflix_Analysis/blob/master)
+
 A detailed analysis of my viewing history on Netflix over the past year (2020 - 2021) using pandas and seaborn in python. 
 
 *P.S. : Refer the jupyter notebooks to understand better. This README file is just a description of the project.*

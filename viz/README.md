@@ -2,7 +2,7 @@
 
 This folder consists of all the analysis and visualizations that have been generated for this project. 
 
-(Refer the ***Script2** jupyter notebook to understand the code for the same). 
+(Refer the **Script2** jupyter notebook to understand the code for the same). 
 
 The following are the visualizations which will be generated. 
 
