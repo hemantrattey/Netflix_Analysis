@@ -1,6 +1,8 @@
 # Netflix Viewing History Analysis - Python
 
-![Netflix](https://github.com/hemantrattey/Netflix_Analysis/blob/master)
+![Netflix](https://github.com/hemantrattey/Netflix_Analysis/blob/master/assets/Netflix.jpg)
+
+Photo by <a href="https://unsplash.com/@molliesivaram?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Mollie Sivaram</a> on <a href="https://unsplash.com/s/photos/netflix?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 
 A detailed analysis of my viewing history on Netflix over the past year (2020 - 2021) using pandas and seaborn in python. 
 
